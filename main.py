@@ -36,13 +36,16 @@ lon = location["lon"]
 
 response = requests.get("https://api.openweathermap.org/data/2.5/weather", params={
     "lat": lat,
-    "lon": lat,
+    "lon": lon,
+    "units": "imperial",
     "appid": api_key
 })
 
 data = response.json()
+
+current_temperature = data["main"]["temp"]
 timezonenumber = data["timezone"]
 timezone_name = tf.timezone_at(lat=lat, lng=lon)
 
 
-print(timezone_name)
+print(f"Location: {timezone_name}\nTemperature: {current_temperature}°F")
