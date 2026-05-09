@@ -6,17 +6,22 @@ from timezonefinder import TimezoneFinder
 
 app = Flask(__name__)
 
+# homepage route
 @app.route("/")
 def index():
     return render_template("index.html")
+
+# inputted location route
+@app.route("/weather")
+def weather():
+    user_location = request.form["user_location"]
+    return render_templates("weather.html", temperature = current_temperature)
 
 tf = TimezoneFinder()
 
 load_dotenv()
 
 api_key = os.getenv("WEATHER_API_KEY")
-
-user_location = input("Enter city or zip code: ")
 
 if user_location.isdigit():
     url = "http://api.openweathermap.org/geo/1.0/zip"
