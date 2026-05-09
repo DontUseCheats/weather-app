@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f0f4f8;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 60px 16px;
+}
+
+.container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  gap: 8px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4a90d9;
+}
+
+button {
+  padding: 10px 20px;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+.results {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.results h2 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.temperature {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 16px;
+  text-transform: capitalize;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 0.9rem;
+  color: #555;
+}

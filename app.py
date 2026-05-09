@@ -1,7 +1,14 @@
 import os
 import requests
+from flask import Flask, request, render_template
 from dotenv import load_dotenv
 from timezonefinder import TimezoneFinder
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 tf = TimezoneFinder()
 
@@ -44,8 +51,8 @@ response = requests.get("https://api.openweathermap.org/data/2.5/weather", param
 data = response.json()
 
 current_temperature = data["main"]["temp"]
-timezonenumber = data["timezone"]
 timezone_name = tf.timezone_at(lat=lat, lng=lon)
 
 
-print(f"Location: {timezone_name}\nTemperature: {current_temperature}°F")
+if __name__ == "__main__":
+    app.run
