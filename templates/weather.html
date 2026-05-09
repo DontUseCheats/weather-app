@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Weather App</h1>
+
+    <form action="/weather" method="POST">
+      <div class="form-group">
+        <input
+          type="text"
+          name="user_location"
+          placeholder="Enter city or zip code"
+          required
+        />
+        <button type="submit">Search</button>
+      </div>
+    </form>
+
+    <section class="results">
+      <h2>CITY_HERE, COUNTRY_HERE</h2>
+      <p class="temperature">TEMPERATURE_HERE°F</p>
+      <p class="description">DESCRIPTION_HERE</p>
+      <div class="details">
+        <span>Humidity: HUMIDITY_HERE%</span>
+        <span>Wind: WIND_HERE mph</span>
+        <span>Timezone: TIMEZONE_HERE</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -14,15 +14,16 @@ def index():
     return render_template("index.html")
 
 # inputted location route
+# all other functions receive parameters here
 @app.route("/weather", methods=["POST"])
 def weather():
     user_location = request.form["user_location"]
     url, params = set_city_or_zip(user_location)
     lat, lon = get_location(url, params, user_location)
     current_temperature, timezone_name = get_weather(lat, lon)
-    return render_template("weather.html", temperature = current_temperature)
+    return render_template("weather.html", temperature = current_temperature, timezone = timezone_name)
 
-
+# checks if city or zip
 def set_city_or_zip(user_location):
     if user_location.isdigit():
         url = "http://api.openweathermap.org/geo/1.0/zip"
@@ -38,6 +39,7 @@ def set_city_or_zip(user_location):
             }
     return url, params
 
+# uses lat and lon to get location
 def get_location(received_url, params, received_user_location):
     find_user_location = requests.get(received_url, params=params)
 
@@ -47,6 +49,7 @@ def get_location(received_url, params, received_user_location):
         location = find_user_location.json()[0]
     return location["lat"], location["lon"]
 
+# uses lat and lon to get weather
 def get_weather(lat, lon):
     response = requests.get("https://api.openweathermap.org/data/2.5/weather", params={
         "lat": lat,
