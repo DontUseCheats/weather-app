@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from timezonefinder import TimezoneFinder
 
 app = Flask(__name__)
+tf = TimezoneFinder()
 load_dotenv()
 api_key = os.getenv("WEATHER_API_KEY")
 
@@ -60,11 +61,10 @@ def get_weather(lat, lon):
 
     data = response.json()
 
-    tf = TimezoneFinder()
     current_temperature = data["main"]["temp"]
     timezone_name = tf.timezone_at(lat=lat, lng=lon)
     return current_temperature, timezone_name
 
 
 if __name__ == "__main__":
-    app.run
+    app.run()
